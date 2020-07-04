@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calculator Design</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			font-size: 15px;
+			font-family: arial;
+		}
+
+		.container{
+			background-image: url('animated-svg.gif');
+			height: 700px;
+			margin: 20px auto;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+		.calculator{
+			width: 320px;
+			height: 520px;
+			margin: 10px auto;
+			position: relative;
+			top: 100px;
+			background: white;
+			color: #888;
+			border-radius: 5px;
+			box-shadow: 5px 7px 20px 0px #20b2aa;
+		}
+
+		.keyboard{
+			height: 400px;
+		}
+
+		.keyword, .operator, .none{
+			width: 50px;
+			height: 50px;
+			border-radius: 50px;
+			margin: 15px;
+			float: left;
+			font-size: 15px;
+			font-weight: bold;
+			border: none;
+			cursor: pointer;
+
+		}
+
+		.keyword, .none{
+			background: #fff;
+		}
+
+		.keyword:focus, .operator:focus, .none:focus{
+			outline: 0;
+		}
+
+		.keyword:active, .operator:active{
+			font-size: 13px;
+		}
+
+
+
+    .textview{
+    	width: 295px;
+    	height: 50px;
+    	margin: 23px 5px;
+    	font-size: 25px;
+    	border: none;
+    	padding: 5px;
+    }
+
+
+    button:nth-child(4){
+    	font-size: 20px;
+    	background: #20b2aa;    }
+
+
+    button:nth-child(8){
+    	font-size: 20px;
+    	background: #ffa500;    }
+
+
+    button:nth-child(12){
+    	font-size: 20px;
+    	background: #f08080;    }
+
+
+    button:nth-child(16){
+    	font-size: 20px;
+    	background: #7d93e0;    }
+
+
+    button:nth-child(20){
+    	font-size: 20px;
+    	background: #9377af;    }
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="calculator">
+			<form action="" name="form">
+				<input class="textview" name="textview">
+			</form>
+
+			<div class="keyboard">
+
+				<button class="operator" value="clear" onclick="clean()">C</button>
+				<button class="operator" value="backspace" onclick="back()">CE</button>
+				<button class="operator" value="%" onclick="insert('%')">%</button>
+				<button class="operator" value="/" onclick="insert('/')">&#247;</button>
+
+
+				<button class="keyword" value="7" onclick="insert(7)">7</button>
+				<button class="keyword" value="8" onclick="insert(8)">8</button>
+				<button class="keyword" value="9" onclick="insert(9)">9</button>
+				<button class="operator" value="*" onclick="insert('*')">x</button>
+
+				<button class="keyword" value="4" onclick="insert(4)">4</button>
+				<button class="keyword" value="5" onclick="insert(5)">5</button>
+				<button class="keyword" value="6" onclick="insert(6)">6</button>
+				<button class="operator" value="-" onclick="insert('-')">-</button>
+
+
+				<button class="keyword" value="1" onclick="insert(1)">1</button>
+				<button class="keyword" value="2" onclick="insert(2)">2</button>
+				<button class="keyword" value="3" onclick="insert(3)">3</button>
+				<button class="operator" value="+" onclick="insert('+')">+</button>
+
+				<button class="none" value="" onclick="">+/-</button>
+				<button class="keyword" value="0" onclick="insert(0)">0</button>
+				<button class="keyword" value="." onclick="insert('.')">.</button>
+				<button class="operator" value="=" onclick="equal()">=</button>
+
+				
+			</div>
+		</div>
+	</div>
+	<script>
+		function insert(num){
+			document.form.textview.value = document.form.textview.value+num 
+		}
+		function equal(){
+			var equal = document.form.textview.value;
+			if (equal) {
+				document.form.textview.value = eval(equal);
+			}
+		}
+   function clean(){
+   	   document.form.textview.value = "";
+   }
+
+    function back(){
+    	var back = document.form.textview.value;
+    	if (back) {
+    		document.form.textview.value = back.substring(0, back.length-1);
+    	}
+    }
+
+
+	</script>
+</body>
+</html>
